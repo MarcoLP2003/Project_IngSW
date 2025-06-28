@@ -15,7 +15,7 @@ public class Libreria{
     private String tipo;
 
     public Libreria(String path, String tipo){
-        if(!tipo.equalsIgnoreCase("json") || tipo.equalsIgnoreCase("csv")){
+        if(!tipo.equalsIgnoreCase("json") && tipo.equalsIgnoreCase("csv")){
             throw new IllegalArgumentException("Tipo file sbagliato");
         }
         this.libri = new LinkedList<>();
