@@ -19,11 +19,13 @@ public class Receiver {
         boolean exists = false;
         for(Libro l : lib){
             if(l.equals(libro)){
+                System.out.println("il libro è uguale a questo: "+l);
                 exists = true;
                 break;
             }
         }
         if(exists){
+
             throw new RuntimeException("Libro gia presente");
         }
         lib.add(libro);
