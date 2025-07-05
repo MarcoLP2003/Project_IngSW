@@ -1,0 +1,42 @@
+[
+{
+"stato": "da leggere",
+"titolo": "Il nome della rosa",
+"isbn": "9788807882186",
+"genere": "Storico",
+"valutazione": 0,
+"autore": "Umberto Eco"
+},
+{
+"stato": "in lettura",
+"titolo": "La solitudine dei numeri primi",
+"isbn": "9788806237651",
+"genere": "Narrativa",
+"valutazione": 3,
+"autore": "Paolo Giordano"
+},
+{
+"stato": "letto",
+"titolo": "1984",
+"isbn": "9780451524935",
+"genere": "Distopico",
+"valutazione": 5,
+"autore": "George Orwell"
+},
+{
+"stato": "letto",
+"titolo": "Il piccolo principe",
+"isbn": "9780156012195",
+"genere": "Fiaba",
+"valutazione": 4,
+"autore": "Antoine de Saint-Exupéry"
+},
+{
+"stato": "da leggere",
+"titolo": "Cent'anni di solitudine",
+"isbn": "9788437604947",
+"genere": "Magico-realismo",
+"valutazione": 0,
+"autore": "Gabriel García Márquez"
+}
+]
