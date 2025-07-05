@@ -59,7 +59,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return titolo+" ["+autore+", "+isbn+", "+genere+", "+valutazione+", "+stato+"]";
+        return titolo+"["+autore+","+isbn+","+genere+","+valutazione+","+stato+"]";
 
     }
 

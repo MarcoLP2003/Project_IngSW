@@ -23,15 +23,25 @@ public class LetturaCSV extends AbstractTemplate{
         LinkedList<Libro> libri = new LinkedList<Libro>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String linea = br.readLine();
-            while (linea != null) {
-                StringTokenizer st = new StringTokenizer(linea, ", []\n");
+            while (true) {
+                String linea = br.readLine();
+                if(linea == null){
+                    break;
+                }
+                StringTokenizer st = new StringTokenizer(linea, ",[]\n");
+                System.out.println("leggo libro da csv");
                 String titolo = st.nextToken();
+                System.out.println("titolo"+titolo);
                 String autore = st.nextToken();
+                System.out.println("autore"+autore);
                 String isbn = st.nextToken();
+                System.out.println("isbn"+isbn);
                 String genere = st.nextToken();
+                System.out.println("genere"+genere);
                 int valutazione = Integer.parseInt(st.nextToken());
+                System.out.println("valutazione"+valutazione);
                 String stato = st.nextToken();
+                System.out.println("stato"+stato);
                 Libro l = new Libro(titolo, autore, isbn, genere, valutazione, stato);
                 libri.add(l);
             }
@@ -40,7 +50,12 @@ public class LetturaCSV extends AbstractTemplate{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Libreria lib = new Libreria(libri);
+        Libreria lib = new Libreria(libri, path, "CSV");
         return lib;
+    }
+
+    @Override
+    public void scrivi(Libro libro, Libreria libreria) {
+        System.out.println("Classe sbagliata per scrivere");
     }
 }
