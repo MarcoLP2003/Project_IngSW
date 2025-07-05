@@ -66,10 +66,10 @@ public class LibreriaGUI extends JFrame {
 
         add(topPanel, BorderLayout.NORTH);
 
-        String[] columns = {"Titolo", "Autore", "Genere", "Valutazione", "Stato", "Azione"};
+        String[] columns = {"Titolo", "Autore", "isbn", "Genere", "Valutazione", "Stato", "Azione"};
         tableModel = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int column) {
-                return column == 5;
+                return column == 6;
             }
         };
         table = new JTable(tableModel);
@@ -152,7 +152,7 @@ public class LibreriaGUI extends JFrame {
     public void aggiornaTabella(List<Libro> libri) {
         tableModel.setRowCount(0);
         for (Libro l : libri) {
-            tableModel.addRow(new Object[]{l.getTitolo(), l.getAutore(), l.getGenere(), l.getValutazione(), l.getStato(), "Modifica"});
+            tableModel.addRow(new Object[]{l.getTitolo(), l.getAutore(), l.getIsbn(), l.getGenere(), l.getValutazione(), l.getStato(), "Modifica"});
         }
     }
 
