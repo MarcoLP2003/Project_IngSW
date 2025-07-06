@@ -3,19 +3,18 @@ package TestTemplate;
 import org.example.Command.ComandoAggiunta;
 import org.example.Command.Receiver;
 import org.example.Strategy.Context;
+import org.example.Template.LetturaJSON;
 import org.example.Template.ScritturaJSON;
 import org.example.main.Libreria;
 import org.example.main.Libro;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+
+import org.junit.jupiter.api.*;
 
 public class TemplateTest {
 
@@ -35,7 +34,9 @@ public class TemplateTest {
         Path tempPath = Files.createTempFile("testFile_", ".json");
         Files.copy(originalPath, tempPath, StandardCopyOption.REPLACE_EXISTING);
         temp = tempPath.toFile();
-        libreria = new Libreria( tempPath.toString(), "json");
+
+        LetturaJSON letturaJSON = new LetturaJSON(temp.getPath());
+        libreria = letturaJSON.leggi();
     }
 
     @Test

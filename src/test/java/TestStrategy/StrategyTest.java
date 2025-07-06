@@ -4,19 +4,17 @@ import org.example.Strategy.Context;
 import org.example.Strategy.Ricerca;
 import org.example.Strategy.RicercaAutore;
 import org.example.Strategy.RicercaTitolo;
+import org.example.Template.LetturaJSON;
 import org.example.main.Libreria;
 import org.example.main.Libro;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.LinkedList;
+
+import org.junit.jupiter.api.*;
 
 public class StrategyTest {
 
@@ -33,7 +31,9 @@ public class StrategyTest {
         Path tempPath = Files.createTempFile("testFile_", ".json");
         Files.copy(originalPath, tempPath, StandardCopyOption.REPLACE_EXISTING);
         temp = tempPath.toFile();
-        libreria = new Libreria( tempPath.toString(), "json");
+
+        LetturaJSON letturaJSON = new LetturaJSON(temp.getPath());
+        libreria = letturaJSON.leggi();
 
         context = new Context();
     }

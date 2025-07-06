@@ -4,12 +4,9 @@ import org.example.Command.ComandoAggiunta;
 import org.example.Command.ComandoModifica;
 import org.example.Command.ComandoRimuovi;
 import org.example.Command.Receiver;
+import org.example.Template.LetturaJSON;
 import org.example.main.Libreria;
 import org.example.main.Libro;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.LinkedList;
+
+import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
 
 public class CommandTest {
 
@@ -34,7 +34,8 @@ public class CommandTest {
         Files.copy(originalPath, tempPath, StandardCopyOption.REPLACE_EXISTING);
         temp = tempPath.toFile();
 
-        libreria = new Libreria( tempPath.toString(), "json");
+        LetturaJSON letturaJSON = new LetturaJSON(temp.getPath());
+        libreria = letturaJSON.leggi();
     }
 
     @Test
@@ -53,11 +54,13 @@ public class CommandTest {
     @Test
     @DisplayName("Test rimozione libro")
     public void testRimozione(){
+        Libro l = new Libro("1984", "George Orwell", "9788806237651","Narrativa", 3, "in lettura");
+
         System.out.println("rimozione libro");
         System.out.println("Libreria iniziale: "+libreria);
 
         Receiver r = new Receiver(libreria);
-        ComandoRimuovi cr =  new ComandoRimuovi(libro, r);
+        ComandoRimuovi cr =  new ComandoRimuovi(l, r);
         cr.esegui();
 
         System.out.println("Libreria finale: "+libreria);
@@ -66,10 +69,12 @@ public class CommandTest {
     @Test
     @DisplayName("Test modifica libro")
     public void testModifica(){
+        Libro l = new Libro("1984", "George Orwell", "9788806237651","Narrativa", 3, "in lettura");
+
         System.out.println("modifica libro");
         System.out.println("Libreria iniziale: "+libreria);
         Receiver r = new Receiver(libreria);
-        Libro mod = libro;
+        Libro mod = l;
         mod.setStato("da leggere");
         mod.setValutazione(1);
         ComandoModifica cm = new ComandoModifica(mod, r);
