@@ -17,4 +17,5 @@ public abstract class AbstractTemplate {
     }
 
     public abstract Libreria leggi();
+    public abstract void scrivi(Libro libro, Libreria libreria);
 }
